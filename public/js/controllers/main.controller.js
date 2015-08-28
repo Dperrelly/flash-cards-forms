@@ -8,6 +8,7 @@ app.controller('MainController', function ($scope, FlashCardsFactory, $log, Scor
     FlashCardsFactory.getFlashCards(category).then(function(cards){
       ScoreFactory.reset();
       $scope.selectedCategory = category;
+      // FlashCardsFactory.currentCategory = category;
       $scope.flashCards = cards;
     }).catch(function(err){
       $log.error('error getting cards:', err);
@@ -15,6 +16,6 @@ app.controller('MainController', function ($scope, FlashCardsFactory, $log, Scor
       $scope.loading = false;
     });
   };
-
+  // FlashCardsFactory.getCategoryCards = $scope.getCategoryCards;
   $scope.getCategoryCards();
 });
