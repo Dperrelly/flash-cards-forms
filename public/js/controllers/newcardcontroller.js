@@ -30,7 +30,8 @@ app.controller('NewCardController', function($scope, $http, FlashCardsFactory){
 						{ text: null, correct: false }
 					]
 				};
-			FlashCardsFactory.getCategoryCards();
+				console.log(FlashCardsFactory.currentCategory);
+			FlashCardsFactory.getCategoryCards(FlashCardsFactory.currentCategory);
 			});
 		}
 		else {

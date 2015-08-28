@@ -7,7 +7,7 @@ app.factory('FlashCardsFactory', function($http) {
     'Node'
   ];
 
-  var currentCategory = {};
+  var currentCategory = undefined;
 
   function getFlashCards(category) {
     var config = {};
