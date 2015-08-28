@@ -16,6 +16,35 @@
             <h3>Incorrect: <span>{{ scores.incorrect }}</span></h3>
         </div>
     </div>
+    <div ng-controller="NewCardController">
+        <form name="newCardForm">
+            <pre>{{newCard | json}}</pre>
+            <h3>question: </h3>
+            <input name='question' ng-model='newCard.question' ng-minlength='15' ng-maxlength='40' required /><br>
+            <h3>category: </h3>
+            <select name='category' ng-model='newCard.category' required /><br>
+                <option>Node</option>
+                <option>MongoDB</option>
+                <option>Angular</option>
+                <option>Express</option>
+            </select>
+            <h3>answer1: </h3>
+            <input name='answer1text'ng-model='newCard.answers[0].text'/>
+            <h3>answer1checkbox: </h3>
+            <input name='answer1checkbox' type='checkbox' ng-model='newCard.answers[0].correct'/><br>
+            <h3>answer2: </h3>
+            <input name='answer2text' ng-model='newCard.answers[1].text'/>
+            <h3>answer2checkbox: </h3>
+            <input name='answer2checkbox' type='checkbox' ng-model='newCard.answers[0].correct'/><br>
+            <h3>answer3: </h3>
+            <input name='answer3text' ng-model='newCard.answers[2].text'/>
+            <h3>answer3checkbox</h3>
+            <input name='answer3checkbox' type='checkbox' ng-model='newCard.answers[0].correct'/><br>
+            <button ng-click='submit()'>Submit</button>
+        </form>
+        <h1>NewCardForm:</h1>
+        <pre>{{newCardForm | json}}</pre>
+    </div>
     <div ng-controller="MainController">
         <div class="cats">
             <button border-hover ng-repeat="category in categories" class="category-button" ng-click="getCategoryCards(category)" ng-class="{ active: category === selectedCategory }">{{ category }}</button>
@@ -31,6 +60,7 @@
         <script src="/js/directives/loader/loader.js"></script>
         <script src="/js/directives/flashcard/flashcard.js"></script>
         <script src="/js/directives/boldborder/boldborder.js"></script>
+        <script src="/js/controllers/newcardcontroller.js"></script>
 </body>
 
 </html>
