@@ -1,7 +1,7 @@
 app.controller('MainController', function ($scope, FlashCardsFactory, $log, ScoreFactory) {
 
   $scope.categories = FlashCardsFactory.categories;
-  $scope.selectedCategory;
+//  $scope.selectedCategory;
 
   $scope.getCategoryCards = function (category) {
     $scope.loading = true;
@@ -16,6 +16,6 @@ app.controller('MainController', function ($scope, FlashCardsFactory, $log, Scor
       $scope.loading = false;
     });
   };
-  // FlashCardsFactory.getCategoryCards = $scope.getCategoryCards;
+  FlashCardsFactory.getCategoryCards = $scope.getCategoryCards;
   $scope.getCategoryCards();
 });

@@ -1,14 +1,20 @@
 app.controller('NewCardController', function($scope, $http, FlashCardsFactory){
-	// $scope.question = 2;
-	// $scope.question = 
+
+    FlashCardsFactory.getFlashCards(FlashCardsFactory.currentCategory).then(function(cards){
+      // $scope.flashCards = cards;
+      console.log(FlashCardsFactory.currentCategory);
+    }).catch(function(err){
+      $log.error('error getting cards:', err);
+    });
+
 	$scope.newCard = {
-	    question: null,
-	    category: null,
-	    answers: [
-	        { text: null, correct: false },
-	        { text: null, correct: false },
-	        { text: null, correct: false }
-	    ]
+		question: null,
+		category: null,
+		answers: [
+			{ text: null, correct: false },
+			{ text: null, correct: false },
+			{ text: null, correct: false }
+		]
 	};
 	$scope.submit = function(){
 		if ($scope.newCardForm.$valid){
@@ -16,27 +22,20 @@ app.controller('NewCardController', function($scope, $http, FlashCardsFactory){
 			$http.post('/cards', $scope.newCard).then(function(res){
 				console.log("res.data: " + res.data);
 				$scope.newCard = {
-	    	question: null,
-	    	category: null,
-	    	answers: [
-	        { text: null, correct: false },
-	        { text: null, correct: false },
-	        { text: null, correct: false }
-	    ]
-	    console.log(FlashCardsFactory);
-  //   FlashCardsFactory.getFlashCards(FlashCardsFactory.currentCategory).then(function(cards){
-  //     // $scope.flashCards = cards;
-  //     console.log(FlashCardsFactory);
-  //   }).catch(function(err){
-  //     $log.error('error getting cards:', err);
-  //   })
-  // };
-	};
+					question: null,
+					category: null,
+					answers: [
+						{ text: null, correct: false },
+						{ text: null, correct: false },
+						{ text: null, correct: false }
+					]
+				};
+			FlashCardsFactory.getCategoryCards();
 			});
 		}
 		else {
 			console.log("is not valid");
 		}
 	};
-
 });
+
